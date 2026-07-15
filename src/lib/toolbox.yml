@@ -1,0 +1,22 @@
+kind: flyoutToolbox
+contents:
+  - kind: block
+    type: text
+    fields:
+      TEXT: Hello Tianzi!
+  - kind: block
+    type: translate
+    fields:
+      TEXT: 通规
+  - kind: block
+    type: translate_block
+
+  - kind: block
+    type: number
+  - kind: block
+    type: choice
+
+  - kind: block
+    type: variables_set
+  - kind: block
+    type: variables_get
