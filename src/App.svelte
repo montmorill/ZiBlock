@@ -62,8 +62,8 @@
 		{/if}
 	</div>
 	<div id="resultDiv" style="bottom: 0;">
-		{#if translatedResult}
-			<pre><code style="color: red">{translatedResult}</code></pre>
+		{#if translateError}
+			<pre><code style="color: red">{translateError}</code></pre>
 		{:else}
 			<pre><code>{translatedResult}</code></pre>
 		{/if}
