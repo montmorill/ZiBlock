@@ -51,9 +51,8 @@
   extensions:
 
 - type: translate_block
-  message0: 转义
-  message1: "%1"
-  args1:
+  message0: "%1"
+  args0:
     - type: input_statement
       name: BODY
   previousStatement: null
