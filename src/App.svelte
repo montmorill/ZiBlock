@@ -8,7 +8,7 @@
 	const blockDefinitions =
 		Blockly.common.createBlockDefinitionsFromJsonArray(blockArray);
 
-	let errorMsg = $state("");
+	let errorMessage = $state("");
 	let outputCode = $state("");
 	let blocklyDiv: HTMLDivElement;
 	$effect(() => {
@@ -18,9 +18,9 @@
 			if (event.isUiEvent) return;
 			try {
 				outputCode = Generator.workspaceToCode(workspace);
-				errorMsg = "";
+				errorMessage = "";
 			} catch (error: any) {
-				errorMsg = "Error: " + (error.message || error);
+				errorMessage = "Error: " + (error.message || error);
 			}
 		});
 	});
@@ -46,12 +46,12 @@
 
 <section>
 	<div id="blocklyDiv" bind:this={blocklyDiv}></div>
-	<pre id="outputDiv">
-		<code class={errorMsg && "error"}>{errorMsg || outputCode}</code>
-	</pre>
-	<pre id="resultDiv">
-		<code class={evaluateError && "error"}>{evaluateError || evaluateResult}</code>
-	</pre>
+	<pre id="outputDiv" style="top: 0;"><code class={errorMessage && "error"}
+			>{errorMessage || outputCode}</code
+		></pre>
+	<pre id="resultDiv" style="bottom: 0;"><code class={evaluateError && "error"}
+			>{evaluateError || evaluateResult}</code
+		></pre>
 </section>
 
 <style>
@@ -60,17 +60,9 @@
 		width: 100vw;
 	}
 
-	#outputDiv {
-		position: fixed;
-		top: 0;
-		right: 0;
-		margin: 0.5em;
-		user-select: none;
-	}
-
+	#outputDiv,
 	#resultDiv {
 		position: fixed;
-		bottom: 0;
 		right: 0;
 		margin: 0.5em;
 		user-select: none;
