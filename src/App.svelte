@@ -70,6 +70,9 @@
 		position: fixed;
 		right: 0;
 		margin: 0.5em;
+		max-width: 50vw;
+		max-height: 40vh;
+		overflow: auto;
 		user-select: none;
 	}
 
