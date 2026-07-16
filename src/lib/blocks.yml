@@ -99,6 +99,15 @@
   previousStatement: null
   nextStatement: null
   style: math_blocks
+  
+- type: calculate_block
+  message0: = %1
+  args0:
+    - type: input_statement
+      name: BODY
+  previousStatement: null
+  nextStatement: null
+  style: math_blocks
 
 # Controls ====================================================================
 - type: controls_repeat

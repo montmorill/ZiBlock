@@ -36,10 +36,13 @@ contents:
         type: number_block
 
       - kind: block
-        type: choice
+        type: calculate
 
       - kind: block
-        type: calculate
+        type: calculate_block
+
+      - kind: block
+        type: choice
 
   # Controls ==================================================================
   - kind: category
