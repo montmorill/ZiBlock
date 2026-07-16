@@ -35,8 +35,6 @@
   style: text_blocks
   tooltip: "%{BKY_TEXT_TEXT_TOOLTIP}"
   helpUrl: "%{BKY_TEXT_TEXT_HELPURL}"
-  extensions:
-    - text_quotes
 
 - type: translate_multiline
   message0: ⟪ %1 ⟫
