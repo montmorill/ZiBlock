@@ -1,5 +1,4 @@
 <script lang="ts">
-	// import "@yaml-js/types";
 	import * as Blockly from "blockly";
 	import * as zhHans from "blockly/msg/zh-hans";
 	import toolbox from "./lib/toolbox.yml";
@@ -7,22 +6,35 @@
 	import { Generator } from "./lib/generator";
 	import { registerFieldMultilineInput } from "@blockly/field-multilineinput";
 
+	Blockly.setLocale(zhHans as any);
+
 	registerFieldMultilineInput();
 
-	Blockly.setLocale(zhHans as any);
 	const blocks = Blockly.common.createBlockDefinitionsFromJsonArray(blockArray);
 	Blockly.common.defineBlocks(blocks);
 
 	let compiledCode = $state("");
 	let compileError = $state("");
 
-	function translate(text: string) {
-		return fetch(`https://tianzi.pbhh.net/translate`, {
+	let translatedResult = $state("");
+	let translateError = $state("");
+
+	$effect(() => {
+		fetch(`https://tianzi.pbhh.net/translate`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ text }),
-		});
-	}
+			body: JSON.stringify({ text: compiledCode }),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				translatedResult = data.translated;
+				translateError = "";
+			})
+			.catch((error) => {
+				translateError = error.message;
+			});
+	});
 </script>
 
 <section>
@@ -44,18 +56,16 @@
 	<div id="outputDiv" style="top: 0;">
 		{#if compileError}
 			<pre style="color: red"><code>{compileError}</code></pre>
-		{:else if compiledCode}
+		{:else}
 			<pre><code>{compiledCode}</code></pre>
 		{/if}
 	</div>
 	<div id="resultDiv" style="bottom: 0;">
-		{#await translate(compiledCode).then((res) => res.json())}
-			<p>...translating</p>
-		{:then result}
-			<pre><code>{result.translated}</code></pre>
-		{:catch error}
-			<pre style="color: red"><code>{error}</code></pre>
-		{/await}
+		{#if translateError}
+			<pre style="color: red"><code>{translateError}</code></pre>
+		{:else}
+			<pre><code>{translatedResult}</code></pre>
+		{/if}
 	</div>
 </section>
 
