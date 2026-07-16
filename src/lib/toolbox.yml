@@ -3,6 +3,7 @@ contents:
   # Text ======================================================================
   - kind: category
     name: 文本
+    colour: 160
     contents:
       # - kind: block
       #   type: text
@@ -26,7 +27,7 @@ contents:
   # Math ======================================================================
   - kind: category
     name: 数学
-    colour: math
+    colour: 230
     contents:
       - kind: block
         type: number
@@ -43,6 +44,7 @@ contents:
   # Controls ==================================================================
   - kind: category
     name: 控制
+    colour: 120
     contents:
       - kind: block
         type: controls_repeat
@@ -50,6 +52,7 @@ contents:
   # Variables =================================================================
   - kind: category
     name: 变量
+    colour: 330
     contents:
       - kind: block
         type: variables_get
