@@ -1,22 +1,47 @@
 kind: flyoutToolbox
 contents:
+  # Text ======================================================================
   - kind: block
     type: text
     fields:
       TEXT: Hello Tianzi!
+
   - kind: block
     type: translate
     fields:
       TEXT: 通规
+
   - kind: block
     type: translate_block
 
+  # Math ======================================================================
   - kind: block
     type: number
+
   - kind: block
     type: choice
 
   - kind: block
-    type: variables_set
+    type: calculate
+
+  # Controls ==================================================================
+  - kind: block
+    type: controls_repeat
+    fields:
+      LAZY: TRUE
+
+  # Variables =================================================================
   - kind: block
     type: variables_get
+
+  - kind: block
+    type: variables_set
+
+  - kind: block
+    type: variables_set_block
+    inputs:
+      VAR:
+        shadow:
+          type: text
+          fields:
+            TEXT: item
