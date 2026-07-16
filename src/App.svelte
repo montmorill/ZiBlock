@@ -6,7 +6,9 @@
 	import { Generator } from "./lib/generator";
 	import { registerFieldMultilineInput } from "@blockly/field-multilineinput";
 
-	Blockly.setLocale(zhHans as any);
+	Blockly.setLocale(Object.assign({}, zhHans, {
+		VARIABLES_DEFAULT_NAME: "变量",
+	}) as any);
 
 	registerFieldMultilineInput();
 
