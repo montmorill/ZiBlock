@@ -4,9 +4,11 @@
   args0:
     - type: field_input
       name: TEXT
-  style: text_blocks
   previousStatement: null
   nextStatement: null
+  style: text_blocks
+  tooltip: "%{BKY_TEXT_TEXT_TOOLTIP}"
+  helpUrl: "%{BKY_TEXT_TEXT_HELPURL}"
   extensions:
     - text_quotes
 
@@ -15,9 +17,11 @@
   args0:
     - type: field_multilinetext
       name: TEXT
-  style: text_blocks
   previousStatement: null
   nextStatement: null
+  style: text_blocks
+  tooltip: "%{BKY_TEXT_TEXT_TOOLTIP}"
+  helpUrl: "%{BKY_TEXT_TEXT_HELPURL}"
   extensions:
     - text_quotes
 
@@ -29,6 +33,10 @@
   previousStatement: null
   nextStatement: null
   style: text_blocks
+  tooltip: "%{BKY_TEXT_TEXT_TOOLTIP}"
+  helpUrl: "%{BKY_TEXT_TEXT_HELPURL}"
+  extensions:
+    - text_quotes
 
 - type: translate_multiline
   message0: ⟪ %1 ⟫
@@ -38,12 +46,15 @@
   previousStatement: null
   nextStatement: null
   style: text_blocks
+  tooltip: "%{BKY_TEXT_TEXT_TOOLTIP}"
+  helpUrl: "%{BKY_TEXT_TEXT_HELPURL}"
+  extensions:
 
 - type: translate_block
-  message0: "%1"
-  args0:
+  message0: 转义
+  message1: "%1"
+  args1:
     - type: input_statement
-      check: translate_block
       name: BODY
   previousStatement: null
   nextStatement: null
@@ -51,30 +62,32 @@
 
 # Math ========================================================================
 - type: number
-  message0: "%1"
+  message0: "# %1"
   args0:
-    - type: field_number
+    - type: field_input
       name: NUM
       value: 0
   previousStatement: null
   nextStatement: null
   style: math_blocks
+  tooltip: "%{BKY_MATH_NUMBER_TOOLTIP}"
+  helpUrl: "%{BKY_MATH_NUMBER_HELPURL}"
 
 - type: choice
-  message0: 选择 %1
-  args0:
+  message0: 选择
+  message1: "%1"
+  args1:
     - type: input_statement
-      check: translate_block
       name: BODY
   previousStatement: null
   nextStatement: null
   style: math_blocks
 
 - type: calculate
-  message0: 计算 %1
-  args0:
+  message0: 计算
+  message1: "%1"
+  args1:
     - type: input_statement
-      check: translate_block
       name: BODY
   previousStatement: null
   nextStatement: null
@@ -113,6 +126,8 @@
   previousStatement: null
   nextStatement: null
   style: variable_blocks
+  tooltip: "%{BKY_VARIABLES_GET_TOOLTIP}"
+  helpUrl: "%{BKY_VARIABLES_GET_HELPURL}"
   extensions:
     - contextMenu_variableSetterGetter
 
@@ -129,6 +144,8 @@
   previousStatement: null
   nextStatement: null
   style: variable_blocks
+  tooltip: "%{BKY_VARIABLES_SET_TOOLTIP}"
+  helpUrl: "%{BKY_VARIABLES_SET_HELPURL}"
   extensions:
     - contextMenu_variableSetterGetter
 
@@ -144,6 +161,8 @@
   previousStatement: null
   nextStatement: null
   style: variable_blocks
+  tooltip: "%{BKY_VARIABLES_SET_TOOLTIP}"
+  helpUrl: "%{BKY_VARIABLES_SET_HELPURL}"
   extensions:
     - contextMenu_variableSetterGetter
 
