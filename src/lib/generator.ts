@@ -86,13 +86,15 @@ Generator.scrub_ = (block: Blockly.Block, code: string) => {
 
 // Text =======================================================================
 
-Generator.forBlock['text'] = (block: Blockly.Block) => {
-  return escape(block.getFieldValue('TEXT'));
-}
+Generator.forBlock['text_multiline'] =
+  Generator.forBlock['text'] = (block: Blockly.Block) => {
+    return escape(block.getFieldValue('TEXT'));
+  }
 
-Generator.forBlock['translate'] = (block: Blockly.Block) => {
-  return translate(block.getFieldValue('TEXT'));
-}
+Generator.forBlock['translate_multiline'] =
+  Generator.forBlock['translate'] = (block: Blockly.Block) => {
+    return translate(block.getFieldValue('TEXT'));
+  }
 
 Generator.forBlock['translate_block'] = (block: Blockly.Block) => {
   return translate(blockToCode(block.getInputTargetBlock('BODY')));

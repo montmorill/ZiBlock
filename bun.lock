@@ -5,6 +5,7 @@
     "": {
       "name": "ziblock",
       "dependencies": {
+        "@blockly/field-multilineinput": "^13.1.0",
         "blockly": "^13.1.1",
       },
       "devDependencies": {
@@ -28,6 +29,8 @@
     "@asamuzakjp/dom-selector": ["@asamuzakjp/dom-selector@6.8.1", "", { "dependencies": { "@asamuzakjp/nwsapi": "^2.3.9", "bidi-js": "^1.0.3", "css-tree": "^3.1.0", "is-potential-custom-element-name": "^1.0.1", "lru-cache": "^11.2.6" } }, "sha512-MvRz1nCqW0fsy8Qz4dnLIvhOlMzqDVBabZx6lH+YywFDdjXhMY37SmpV1XFX3JzG5GWHn63j6HX6QPr3lZXHvQ=="],
 
     "@asamuzakjp/nwsapi": ["@asamuzakjp/nwsapi@2.3.9", "", {}, "sha512-n8GuYSrI9bF7FFZ/SjhwevlHc8xaVlb/7HmHelnc/PZXBD2ZR49NnN9sMMuDdEGPeeRQ5d0hqlSlEpgCX3Wl0Q=="],
+
+    "@blockly/field-multilineinput": ["@blockly/field-multilineinput@13.1.0", "", { "peerDependencies": { "blockly": "^13.1.0" } }, "sha512-mQ6hb3kA+8qS5wBTh2uhHPwGJ2033xmIde0WACQg2hp7Fg59aeA8masr7VNPSQVi6UT79hWt15XAkxUqnkPJxw=="],
 
     "@csstools/color-helpers": ["@csstools/color-helpers@6.1.0", "", {}, "sha512-064IFJdjTfUqnjpCVpMOdbr8FLQBhinbZj6yRv2An2E41O/pLEXqfFRWqGq/SxlE5PEUYTlvWsG2r8MswAVvkg=="],
 

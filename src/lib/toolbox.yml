@@ -1,13 +1,19 @@
 kind: flyoutToolbox
 contents:
   # Text ======================================================================
-  - kind: block
-    type: text
-    fields:
-      TEXT: Hello Tianzi!
+  # - kind: block
+  #   type: text
 
   - kind: block
-    type: translate
+    type: text_multiline
+
+  # - kind: block
+  #   type: translate
+  #   fields:
+  #     TEXT: 通规
+
+  - kind: block
+    type: translate_multiline
     fields:
       TEXT: 通规
 
@@ -23,6 +29,10 @@ contents:
 
   - kind: block
     type: calculate
+    inputs:
+      BODY:
+        shadow:
+          type: text_multiline
 
   # Controls ==================================================================
   - kind: block

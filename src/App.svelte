@@ -1,12 +1,17 @@
 <script lang="ts">
 	// import "@yaml-js/types";
 	import * as Blockly from "blockly";
+	import * as zhHans from "blockly/msg/zh-hans";
 	import toolbox from "./lib/toolbox.yml";
 	import blockArray from "./lib/blocks.yml";
 	import { Generator } from "./lib/generator";
+	import { registerFieldMultilineInput } from "@blockly/field-multilineinput";
 
-	const blockDefinitions =
-		Blockly.common.createBlockDefinitionsFromJsonArray(blockArray);
+	registerFieldMultilineInput();
+
+	Blockly.setLocale(zhHans as any);
+	const blocks = Blockly.common.createBlockDefinitionsFromJsonArray(blockArray);
+	Blockly.common.defineBlocks(blocks);
 
 	let compiledCode = $state("");
 	let compileError = $state("");
@@ -24,7 +29,6 @@
 	<div
 		id="blocklyDiv"
 		{@attach (blocklyDiv) => {
-			Blockly.common.defineBlocks(blockDefinitions);
 			const workspace = Blockly.inject(blocklyDiv, { toolbox });
 			workspace.addChangeListener((event) => {
 				if (event.isUiEvent) return;

@@ -10,10 +10,30 @@
   extensions:
     - text_quotes
 
+- type: text_multiline
+  message0: "%1"
+  args0:
+    - type: field_multilinetext
+      name: TEXT
+  style: text_blocks
+  previousStatement: null
+  nextStatement: null
+  extensions:
+    - text_quotes
+
 - type: translate
   message0: ⟪ %1 ⟫
   args0:
     - type: field_input
+      name: TEXT
+  previousStatement: null
+  nextStatement: null
+  style: text_blocks
+
+- type: translate_multiline
+  message0: ⟪ %1 ⟫
+  args0:
+    - type: field_multilinetext
       name: TEXT
   previousStatement: null
   nextStatement: null
