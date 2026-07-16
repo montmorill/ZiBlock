@@ -32,14 +32,13 @@ contents:
         type: number
 
       - kind: block
+        type: number_block
+
+      - kind: block
         type: choice
 
       - kind: block
         type: calculate
-        inputs:
-          BODY:
-            shadow:
-              type: text_multiline
 
   # Controls ==================================================================
   - kind: category

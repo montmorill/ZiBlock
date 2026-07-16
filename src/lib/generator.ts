@@ -103,8 +103,13 @@ Generator.forBlock['translate_block'] = (block: Blockly.Block) => {
 // Math =======================================================================
 
 Generator.forBlock['number'] = (block: Blockly.Block) => {
-  const num = block.getFieldValue('NUM');
-  return translate(Symbols.Immediate + num);
+  const body = block.getFieldValue('BODY');
+  return translate(Symbols.Immediate + body);
+}
+
+Generator.forBlock['number_block'] = (block: Blockly.Block) => {
+  const body = block.getInputTargetBlock('BODY');
+  return translate(Symbols.Immediate + blockToCode(body));
 }
 
 Generator.forBlock['choice'] = (block: Blockly.Block) => {
@@ -113,6 +118,11 @@ Generator.forBlock['choice'] = (block: Blockly.Block) => {
 }
 
 Generator.forBlock['calculate'] = (block: Blockly.Block) => {
+  const text = block.getFieldValue('BODY');
+  return translate(Symbols.Calculate + text);
+}
+
+Generator.forBlock['calculate_block'] = (block: Blockly.Block) => {
   const body = block.getInputTargetBlock('BODY');
   return translate(Symbols.Calculate + blockToCode(body));
 }
