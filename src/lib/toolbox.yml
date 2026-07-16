@@ -1,63 +1,74 @@
-kind: flyoutToolbox
+kind: categoryToolbox
 contents:
   # Text ======================================================================
-  # - kind: block
-  #   type: text
+  - kind: category
+    name: 文本
+    contents:
+      # - kind: block
+      #   type: text
 
-  - kind: block
-    type: text_multiline
+      - kind: block
+        type: text_multiline
 
-  # - kind: block
-  #   type: translate
-  #   fields:
-  #     TEXT: 通规
+      # - kind: block
+      #   type: translate
+      #   fields:
+      #     TEXT: 通规
 
-  - kind: block
-    type: translate_multiline
-    fields:
-      TEXT: 通规
+      - kind: block
+        type: translate_multiline
+        fields:
+          TEXT: 通规
 
-  - kind: block
-    type: translate_block
+      - kind: block
+        type: translate_block
 
   # Math ======================================================================
-  - kind: block
-    type: number
+  - kind: category
+    name: 数学
+    colour: math
+    contents:
+      - kind: block
+        type: number
 
-  - kind: block
-    type: choice
+      - kind: block
+        type: choice
 
-  - kind: block
-    type: calculate
-    inputs:
-      BODY:
-        shadow:
-          type: text_multiline
+      - kind: block
+        type: calculate
+        inputs:
+          BODY:
+            shadow:
+              type: text_multiline
 
   # Controls ==================================================================
-  - kind: block
-    type: controls_repeat
-    fields:
-      LAZY: TRUE
+  - kind: category
+    name: 控制
+    contents:
+      - kind: block
+        type: controls_repeat
 
   # Variables =================================================================
-  - kind: block
-    type: variables_get
+  - kind: category
+    name: 变量
+    contents:
+      - kind: block
+        type: variables_get
 
-  - kind: block
-    type: variables_set
+      - kind: block
+        type: variables_set
 
-  - kind: block
-    type: variables_set_block
-    inputs:
-      VAR:
-        shadow:
-          type: text
-          fields:
-            TEXT: item
+      - kind: block
+        type: variables_set_block
+        inputs:
+          VAR:
+            shadow:
+              type: text
+              fields:
+                TEXT: 变量 # "%{BKY_VARIABLES_DEFAULT_NAME}"
 
-  - kind: block
-    type: variables_get_linger
+      - kind: block
+        type: variables_get_linger
 
-  - kind: block
-    type: variables_set_linger
+      - kind: block
+        type: variables_set_linger

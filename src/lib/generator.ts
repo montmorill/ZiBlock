@@ -132,13 +132,15 @@ Generator.forBlock['controls_repeat'] = (block: Blockly.Block) => {
 Generator.forBlock['variables_set'] = (block: Blockly.Block) => {
   const value = blockToCode(block.getInputTargetBlock('VALUE'));
   const name = block.getField('VAR')!.getText();
-  return translate(value + Symbols.Cache + name);
+  const echo = block.getFieldValue('ECHO') === 'TRUE';
+  return translate(value + Symbols.Cache + name + (echo ? Symbols.Cache : ''));
 }
 
 Generator.forBlock['variables_set_block'] = (block: Blockly.Block) => {
   const value = blockToCode(block.getInputTargetBlock('VALUE'));
   const name = blockToCode(block.getInputTargetBlock('VAR'));
-  return translate(value + Symbols.InnerValAssign + name);
+  const echo = block.getFieldValue('ECHO') === 'TRUE';
+  return translate(value + Symbols.InnerValAssign + name + (echo ? Symbols.Cache : ''));
 }
 
 Generator.forBlock['variables_get'] = (block: Blockly.Block) => {

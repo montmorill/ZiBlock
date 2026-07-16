@@ -110,6 +110,7 @@
   args2:
     - type: field_checkbox
       name: LAZY
+      checked: TRUE
   previousStatement: null
   nextStatement: null
   style: loop_blocks
@@ -141,6 +142,10 @@
   args1:
     - type: input_statement
       name: VALUE
+  message2: "回响 %1"
+  args2:
+    - type: field_checkbox
+      name: ECHO
   previousStatement: null
   nextStatement: null
   style: variable_blocks
@@ -158,6 +163,10 @@
   args1:
     - type: input_statement
       name: VALUE
+  message2: "回响 %1"
+  args2:
+    - type: field_checkbox
+      name: ECHO
   previousStatement: null
   nextStatement: null
   style: variable_blocks
