@@ -8,50 +8,51 @@
 	const blockDefinitions =
 		Blockly.common.createBlockDefinitionsFromJsonArray(blockArray);
 
-	let errorMessage = $state("");
-	let outputCode = $state("");
-	let blocklyDiv: HTMLDivElement;
-	$effect(() => {
-		Blockly.common.defineBlocks(blockDefinitions);
-		const workspace = Blockly.inject(blocklyDiv, { toolbox });
-		workspace.addChangeListener((event) => {
-			if (event.isUiEvent) return;
-			try {
-				outputCode = Generator.workspaceToCode(workspace);
-				errorMessage = "";
-			} catch (error: any) {
-				errorMessage = "Error: " + (error.message || error);
-			}
-		});
-	});
+	let compiledCode = $state("");
+	let compileError = $state("");
 
-	let evaluateResult = $state("");
-	let evaluateError = $state("");
-	$effect(() => {
-		fetch(`https://tianzi.pbhh.net/translate`, {
+	function translate(text: string) {
+		return fetch(`https://tianzi.pbhh.net/translate`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ text: outputCode }),
-		})
-			.then((res) => res.json())
-			.then(async (res) => {
-				evaluateResult = res.translated;
-				evaluateError = "";
-			})
-			.catch((error) => {
-				evaluateError = "Error: " + (error.message || error);
-			});
-	});
+			body: JSON.stringify({ text }),
+		});
+	}
 </script>
 
 <section>
-	<div id="blocklyDiv" bind:this={blocklyDiv}></div>
-	<pre id="outputDiv" style="top: 0;"><code class={errorMessage && "error"}
-			>{errorMessage || outputCode}</code
-		></pre>
-	<pre id="resultDiv" style="bottom: 0;"><code class={evaluateError && "error"}
-			>{evaluateError || evaluateResult}</code
-		></pre>
+	<div
+		id="blocklyDiv"
+		{@attach (blocklyDiv) => {
+			Blockly.common.defineBlocks(blockDefinitions);
+			const workspace = Blockly.inject(blocklyDiv, { toolbox });
+			workspace.addChangeListener((event) => {
+				if (event.isUiEvent) return;
+				try {
+					compiledCode = Generator.workspaceToCode(workspace);
+					compileError = "";
+				} catch (error: any) {
+					compileError = error.message;
+				}
+			});
+		}}
+	></div>
+	<div id="outputDiv" style="top: 0;">
+		{#if compileError}
+			<pre style="color: red"><code>{compileError}</code></pre>
+		{:else if compiledCode}
+			<pre><code>{compiledCode}</code></pre>
+		{/if}
+	</div>
+	<div id="resultDiv" style="bottom: 0;">
+		{#await translate(compiledCode).then((res) => res.json())}
+			<p>...translating</p>
+		{:then result}
+			<pre><code>{result.translated}</code></pre>
+		{:catch error}
+			<pre style="color: red"><code>{error}</code></pre>
+		{/await}
+	</div>
 </section>
 
 <style>
@@ -66,10 +67,6 @@
 		right: 0;
 		margin: 0.5em;
 		user-select: none;
-	}
-
-	.error {
-		color: red;
 	}
 
 	code {
