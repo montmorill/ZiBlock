@@ -140,7 +140,7 @@ Generator.forBlock['variables_set_block'] = (block: Blockly.Block) => {
   const value = blockToCode(block.getInputTargetBlock('VALUE'));
   const name = blockToCode(block.getInputTargetBlock('VAR'));
   const echo = block.getFieldValue('ECHO') === 'TRUE';
-  return translate(value + Symbols.InnerValAssign + name + (echo ? Symbols.Cache : ''));
+  return translate(value + Symbols.Cache + name + (echo ? Symbols.Cache : ''));
 }
 
 Generator.forBlock['variables_get'] = (block: Blockly.Block) => {
