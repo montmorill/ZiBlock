@@ -84,7 +84,6 @@
   helpUrl: "%{BKY_CONTROLS_REPEAT_HELPURL}"
 
 # Variables ===================================================================
-
 - type: variables_get
   message0: "%1"
   args0:
@@ -127,3 +126,28 @@
   style: variable_blocks
   extensions:
     - contextMenu_variableSetterGetter
+
+- type: variables_get_linger
+  message0: 导入 %1
+  args0:
+    - type: field_input
+      name: SCOPE
+      text: scope
+  previousStatement: null
+  nextStatement: null
+  style: variable_dynamic_blocks
+  extensions:
+    - contextMenu_variableSetterGetter
+
+- type: variables_set_linger
+  message0: 导出 %1 到 %2
+  args0:
+    - type: field_variable
+      name: VAR
+      variable: "%{BKY_VARIABLES_DEFAULT_NAME}"
+    - type: field_input
+      name: SCOPE
+      text: scope
+  previousStatement: null
+  nextStatement: null
+  style: variable_dynamic_blocks

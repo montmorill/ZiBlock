@@ -45,3 +45,9 @@ contents:
           type: text
           fields:
             TEXT: item
+
+  - kind: block
+    type: variables_get_linger
+
+  - kind: block
+    type: variables_set_linger

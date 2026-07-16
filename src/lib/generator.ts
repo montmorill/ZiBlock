@@ -143,3 +143,14 @@ Generator.forBlock['variables_get'] = (block: Blockly.Block) => {
   const name = block.getField('VAR')!.getText();
   return translate(Symbols.Reference + name);
 }
+
+Generator.forBlock['variables_get_linger'] = (block: Blockly.Block) => {
+  const name = block.getField('SCOPE')!.getText();
+  return translate(Symbols.LingerRef + name);
+}
+
+Generator.forBlock['variables_set_linger'] = (block: Blockly.Block) => {
+  const name = block.getField('VAR')!.getText();
+  const scope = block.getFieldValue('SCOPE');
+  return translate(name + Symbols.LingerAssign + scope);
+}
