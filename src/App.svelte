@@ -20,18 +20,19 @@
 	let translateError = $state("");
 
 	$effect(() => {
-		fetch(`https://tianzi.pbhh.net/translate`, {
+		fetch(`https://api.hongbot.icu/tianzi`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ text: compiledCode }),
+			body: JSON.stringify({ cmd: compiledCode }),
 		})
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
-				translatedResult = data.translated;
+				translatedResult = data.msg;
 				translateError = "";
 			})
 			.catch((error) => {
+				console.log(error);
 				translateError = error.message;
 			});
 	});
@@ -55,14 +56,14 @@
 	></div>
 	<div id="outputDiv" style="top: 0;">
 		{#if compileError}
-			<pre style="color: red"><code>{compileError}</code></pre>
+			<pre><code style="color: red">{compileError}</code></pre>
 		{:else}
 			<pre><code>{compiledCode}</code></pre>
 		{/if}
 	</div>
 	<div id="resultDiv" style="bottom: 0;">
-		{#if translateError}
-			<pre style="color: red"><code>{translateError}</code></pre>
+		{#if translatedResult}
+			<pre><code style="color: red">{translatedResult}</code></pre>
 		{:else}
 			<pre><code>{translatedResult}</code></pre>
 		{/if}
