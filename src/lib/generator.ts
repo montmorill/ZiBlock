@@ -107,7 +107,7 @@ Generator.forBlock['number'] = (block: Blockly.Block) => {
 
 Generator.forBlock['choice'] = (block: Blockly.Block) => {
   const body = block.getInputTargetBlock('BODY');
-  return translate(body && joinBlock(body, ';'));
+  return translate(body && joinBlock(body, ' '));
 }
 
 Generator.forBlock['calculate'] = (block: Blockly.Block) => {
