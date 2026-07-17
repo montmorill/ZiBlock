@@ -4,7 +4,7 @@ contents:
   # Text ======================================================================
   - kind: category
     name: 文本
-    colour: 160
+    colour: "%{BKY_TEXTS_HUE}"
     contents:
       # - { kind: block, type: text }
       - { kind: block, type: text_multiline }
@@ -15,7 +15,7 @@ contents:
   # Math ======================================================================
   - kind: category
     name: 数学
-    colour: 230
+    colour: "%{BKY_MATH_HUE}"
     contents:
       # - { kind: block, type: number }
       - kind: block
@@ -29,8 +29,8 @@ contents:
 
   # Controls ==================================================================
   - kind: category
-    name: 控制
-    colour: 120
+    name: 循环
+    colour: "%{BKY_LOOPS_HUE}"
     contents:
       - { kind: block, type: controls_repeat }
       - { kind: block, type: controls_repeat_block }
@@ -38,18 +38,14 @@ contents:
   # Variables =================================================================
   - kind: category
     name: 变量
-    colour: 330
+    colour: "%{BKY_VARIABLES_HUE}"
     contents:
-      - {
-          kind: block,
-          type: variables_get,
-          fields: { VAR: "%{BKY_VARIABLES_DEFAULT_NAME}" },
-        }
-      - {
-          kind: block,
-          type: variables_set,
-          fields: { VAR: "%{BKY_VARIABLES_DEFAULT_NAME}" },
-        }
+      - kind: block
+        type: variables_get
+        fields: { VAR: "%{BKY_VARIABLES_DEFAULT_NAME}" }
+      - kind: block
+        type: variables_set
+        fields: { VAR: "%{BKY_VARIABLES_DEFAULT_NAME}" }
       - { kind: block, type: variables_set_block }
       - { kind: block, type: variables_get_linger }
       - { kind: block, type: variables_set_linger }
