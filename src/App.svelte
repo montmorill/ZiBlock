@@ -24,14 +24,14 @@
 	<Blockly bind:value={compiledCode} bind:error={compileError} />
 	<div id="outputDiv" style="top: 0;">
 		{#if compileError}
-			<pre><code style="color: red">{compileError}</code></pre>
+			<pre><code class="error">{compileError}</code></pre>
 		{:else}
 			<pre><code>{compiledCode}</code></pre>
 		{/if}
 	</div>
 	<div id="resultDiv" style="bottom: 0;">
 		{#if executeResource.error}
-			<pre><code style="color: red">{executeResource.error}</code></pre>
+			<pre><code class="error">{executeResource.error}</code></pre>
 		{:else}
 			<pre><code>{executeResource.current}</code></pre>
 		{/if}
@@ -43,7 +43,7 @@
 	#resultDiv {
 		position: fixed;
 		right: 0;
-		margin: 0.5em;
+		margin: 1em;
 		max-width: 50vw;
 		max-height: 40vh;
 		overflow: auto;
@@ -52,5 +52,9 @@
 
 	code {
 		user-select: text;
+	}
+
+	.error {
+		color: red;
 	}
 </style>
