@@ -6,10 +6,10 @@ contents:
     name: 文本
     colour: "%{BKY_TEXTS_HUE}"
     contents:
-      # - { kind: block, type: text }
+      - { kind: block, type: text }
       - { kind: block, type: text_multiline }
-      # - { kind: block, type: translate, fields: { TEXT: 通规 } }
-      - { kind: block, type: translate_multiline, fields: { TEXT: 通规 } }
+      - { kind: block, type: translate }
+      - { kind: block, type: translate_multiline }
       - { kind: block, type: translate_block }
 
   # Math ======================================================================
@@ -40,12 +40,8 @@ contents:
     name: 变量
     colour: "%{BKY_VARIABLES_HUE}"
     contents:
-      - kind: block
-        type: variables_get
-        fields: { VAR: "%{BKY_VARIABLES_DEFAULT_NAME}" }
-      - kind: block
-        type: variables_set
-        fields: { VAR: "%{BKY_VARIABLES_DEFAULT_NAME}" }
+      - { kind: block, type: variables_get }
+      - { kind: block, type: variables_set }
       - { kind: block, type: variables_set_block }
       - { kind: block, type: variables_get_linger }
       - { kind: block, type: variables_set_linger }

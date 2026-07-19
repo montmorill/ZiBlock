@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@blockly/field-multilineinput": "^13.1.0",
-    "blockly": "^13.1.1"
+    "blockly": "^13.1.1",
+    "runed": "^0.37.1"
   }
 }
