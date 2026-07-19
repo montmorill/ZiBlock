@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resource } from "runed";
-	import Blockly from "./lib/Blockly.svelte";
+	import Workspace from "./lib/Workspace.svelte";
 
 	let compiledCode = $state("");
 	let compileError = $state("");
@@ -14,33 +14,30 @@
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ cmd }),
 			});
-			const { msg } = await res.json();
-			return msg;
+			const data = await res.json();
+			return data.msg;
 		},
 	);
 </script>
 
 <section>
-	<Blockly bind:value={compiledCode} bind:error={compileError} />
+	<Workspace bind:value={compiledCode} bind:error={compileError} />
 	<div id="outputDiv" style="top: 0;">
 		{#if compileError}
 			<pre><code class="error">{compileError}</code></pre>
-		{:else}
+		{:else if compiledCode}
 			<pre><code>{compiledCode}</code></pre>
 		{/if}
-	</div>
-	<div id="resultDiv" style="bottom: 0;">
 		{#if executeResource.error}
 			<pre><code class="error">{executeResource.error}</code></pre>
-		{:else}
+		{:else if executeResource.current}
 			<pre><code>{executeResource.current}</code></pre>
 		{/if}
 	</div>
 </section>
 
 <style>
-	#outputDiv,
-	#resultDiv {
+	#outputDiv {
 		position: fixed;
 		right: 0;
 		margin: 1em;
@@ -48,6 +45,10 @@
 		max-height: 40vh;
 		overflow: auto;
 		user-select: none;
+		display: flex;
+		flex-direction: column;
+		align-items: end;
+		gap: 0.5em;
 	}
 
 	code {
