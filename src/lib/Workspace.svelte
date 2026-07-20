@@ -1,7 +1,6 @@
 <script module>
   import * as Blockly from "blockly";
   import * as zhHans from "blockly/msg/zh-hans";
-  import { Themes } from "blockly/core";
   import toolbox from "./toolbox.yml";
   import blockArray from "./blocks.yml";
   import Generator from "./generator";
