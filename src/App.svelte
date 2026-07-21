@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resource } from "runed";
+	import toolbox from "./lib/toolbox.yml";
 	import Workspace from "./lib/Workspace.svelte";
 
 	let compiledCode = $state("");
@@ -21,7 +22,7 @@
 </script>
 
 <section>
-	<Workspace bind:value={compiledCode} bind:error={compileError} />
+	<Workspace {toolbox} bind:value={compiledCode} bind:error={compileError} />
 	<div id="outputDiv" style="top: 0;">
 		{#if compileError}
 			<pre><code class="error">{compileError}</code></pre>

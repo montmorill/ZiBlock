@@ -11,6 +11,7 @@ contents:
       - { kind: block, type: translate }
       - { kind: block, type: translate_multiline }
       - { kind: block, type: translate_block }
+      - { kind: block, type: lexicon }
 
   # Math ======================================================================
   - kind: category

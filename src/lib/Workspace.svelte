@@ -1,19 +1,10 @@
 <script module>
-  import * as Blockly from "blockly";
-  import * as zhHans from "blockly/msg/zh-hans";
-  import toolbox from "./toolbox.yml";
-  import blockArray from "./blocks.yml";
-  import Generator from "./generator";
-  import { registerFieldMultilineInput } from "@blockly/field-multilineinput";
-
-  registerFieldMultilineInput();
-  Blockly.setLocale(zhHans as any);
-
-  const blocks = Blockly.common.createBlockDefinitionsFromJsonArray(blockArray);
-  Blockly.common.defineBlocks(blocks);
+  import "."
 </script>
 
 <script lang="ts">
+  import * as Blockly from "blockly";
+  import Generator from "./generator";
   let {
     value = $bindable<string>(),
     error = $bindable<string>(),
@@ -25,7 +16,6 @@
   style="height: 100vh; width: 100vw;"
   {@attach (blocklyDiv) => {
     const workspace = Blockly.inject(blocklyDiv, {
-      toolbox,
       grid: { colour: "#f0f0f0", length: 12, snap: true, spacing: 32 },
       move: { drag: true, scrollbars: true, wheel: true },
       zoom: { controls: true, pinch: true, wheel: true },

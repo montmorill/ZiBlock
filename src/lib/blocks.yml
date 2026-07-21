@@ -1,7 +1,7 @@
 # Text ========================================================================
 
 - type: text
-  message0: "\u201c %1 \u201d"
+  message0: “ %1 ”
   args0:
     - &input_text
       type: field_input
@@ -17,7 +17,7 @@
       helpUrl: "%{BKY_TEXT_TEXT_HELPURL}"
 
 - type: text_multiline
-  message0: "\u00B6 %1"
+  message0: ¶ %1
   args0:
     - &field_input_multiline
       type: field_multilinetext
@@ -25,7 +25,7 @@
   <<: *text_text
 
 - type: translate
-  message0: ⟪ %1 ⟫
+  message0: 〚 %1 〛
   args0: [*input_text]
   <<: &text_translate
     <<: *text
@@ -44,6 +44,13 @@
       type: input_statement
       name: BODY
   <<: *text_translate
+
+- type: lexicon
+  message0: "词典 %1 查询 %2"
+  args0:
+    - { type: field_input, name: NAME }
+    - { type: field_input, name: QUERY }
+  <<: *text
 
 # Math ========================================================================
 
